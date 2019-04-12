@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "CSharpFunction Remote Debug (.NET Core)",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickRemoteProcess}",
+      "pipeTransport": {
+        "pipeProgram": "ssh",
+        "pipeArgs": [
+          "-T",
+          "torizon@10.12.1.42",
+          "docker exec -i Test ${debuggerCommand}"
+        ],
+        "debuggerPath": "/root/vsdbg/vsdbg",
+        "pipeCwd": "${workspaceFolder}",
+        "quoteArgs": true
+      },
+      "sourceFileMap": {
+        "/out": "${workspaceFolder}"
+      },
+      "justMyCode": true
+    }
+  ]
+}
