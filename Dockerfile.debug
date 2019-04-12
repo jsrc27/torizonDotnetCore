@@ -1,0 +1,22 @@
+FROM microsoft/dotnet:2.2-sdk-bionic-arm32v7 AS base
+
+COPY qemu-arm-static /usr/bin
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends unzip procps && \
+    curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg && \
+    rm -rf /var/lib/apt/lists/*
+
+FROM microsoft/dotnet:2.2-sdk AS build-env
+WORKDIR /app
+
+COPY *.csproj ./
+RUN dotnet restore
+COPY . ./
+RUN dotnet publish -c Debug -o out
+
+FROM base
+
+COPY --from=build-env /app/out /out
+
+ENTRYPOINT ["dotnet", "/out/dotnetTest.dll"]
