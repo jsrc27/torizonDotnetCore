@@ -1,11 +1,11 @@
 # .NET Core w/ Visual Studio Code on TorizonCore
 
 ### Prerequisites: 
-* Toradex device with the `TorizonCore with Docker runtime` image installed
-* Linux development machine with Visual Studio Code installed
-* C# and Docker Visual Studio code extensions installed and enabled
-* .Net Core SDK installed on development machine
-* Docker hub account created to store built containers
+* Toradex device with the [TorizonCore with Docker runtime](https://www.youtube.com/watch?v=hwCXSckISXM) image installed
+* Linux development machine with [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux) installed
+* [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) and [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) Visual Studio code extensions installed and enabled
+* [.Net Core SDK](https://dotnet.microsoft.com/download) installed on development machine
+* [Docker hub](https://hub.docker.com/) account created to store built containers
 
 ### Creating Hello World Project
 * Open empty project folder in Visual Studio Code (VSC)
@@ -102,5 +102,10 @@ ENTRYPOINT ["dotnet", "/out/dotnetTest.dll"]
 * Have fun debugging!
 
 ### Other Notes
-* On the dotnet source container images from Microsoft make sure the versions match both in the container an what's on your dev machine
-* This is a unoptimized but quick getting started guide the container images created from these dockerfiles will be large. For a more optimized container image consider using the dotnet runtime and not the full sdk in the container
+* On the dotnet source container images from Microsoft make sure the versions match both in the container and what's on your dev machine
+* This is an unoptimized but quick getting started guide the container images created from these dockerfiles will be large. For a more optimized container image consider using the dotnet runtime and not the full sdk in the container
+
+### Other References
+[1](https://code.visualstudio.com/docs/other/dotnet)
+[2](https://docs.microsoft.com/en-us/dotnet/core/docker/build-container)
+[3](https://github.com/OmniSharp/omnisharp-vscode/wiki/Remote-Debugging-On-Linux-Arm)
